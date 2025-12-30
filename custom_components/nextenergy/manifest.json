@@ -1,7 +1,6 @@
 {
   "domain": "nextenergy",
   "name": "NextEnergy API",
-  "version": "1.0.0",
   "after_dependencies": ["http"],
   "codeowners": ["@clousberg"],
   "config_flow": true,
@@ -12,5 +11,6 @@
   "issue_tracker": "https://github.com/clousberg/NextEnergyAPI/issues",
   "loggers": ["nextenergy"],
   "requirements": [],
-  "quality_scale": "custom"
+  "quality_scale": "custom",
+  "version": "1.0.0"  
 }
