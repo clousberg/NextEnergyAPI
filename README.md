@@ -33,3 +33,8 @@ nextenergy_password: "YOUR_PASSWORD"
 ## License
 
 MIT
+
+## THANKS
+
+Big thansk to https://github.com/iacavd/NextEnergyPricesHA and https://github.com/ServError/NextEnergyPricesHA
+for the analysis and coding!
