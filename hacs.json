@@ -1,5 +1,6 @@
 {
-  "name": "NextEnergy Market Prices",
+  "_comment": "https://hacs.xyz/docs/publish/start/#hacsjson",
+  "name": "NextEnergy API",
   "content_in_root": false,
   "domains": ["sensor"],
   "country": "NL",
