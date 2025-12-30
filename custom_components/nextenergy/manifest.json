@@ -12,5 +12,5 @@
   "issue_tracker": "https://github.com/clousberg/NextEnergyAPI/issues",
   "loggers": ["nextenergy"],
   "requirements": [],
-  "quality_scale": "Custom"
+  "quality_scale": "custom"
 }
