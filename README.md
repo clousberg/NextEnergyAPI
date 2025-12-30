@@ -1,6 +1,8 @@
-# NextEnergy Market Prices (Home Assistant Integration)
+# NextEnergy API (Home Assistant Integration)
 
-Fetches and displays NextEnergy market prices for the next 24h, supporting both Market and Market+ rates.
+Fetches and displays NextEnergy API data from the Customer Portal.
+
+Currently supporting  Market and Market+ rates.
 
 ## Credentials
 
