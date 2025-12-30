@@ -1,10 +1,16 @@
 {
+  "_comment": "https://developers.home-assistant.io/docs/creating_integration_manifest/",
   "domain": "nextenergy",
-  "name": "NextEnergy Market Prices",
-  "version": "1.0.0",
-  "documentation": "https://github.com/yourusername/nextenergy",
-  "requirements": [],
+  "name": "NextEnergy API",
+  "after_dependencies": ["http"],
+  "codeowners": ["@clousberg"],
+  "config_flow": true,
   "dependencies": [],
-  "codeowners": ["@yourusername"],
-  "config_flow": true
+  "documentation": "https://github.com/clousberg/NextEnergyAPI",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/clousberg/NextEnergyAPI/issues",
+  "loggers": ["nextenergy"],
+  "requirements": [],
+  "quality_scale": "Custom"
 }
