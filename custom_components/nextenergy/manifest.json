@@ -1,7 +1,6 @@
 {
   "domain": "nextenergy",
   "name": "NextEnergy API",
-  "after_dependencies": ["http"],
   "codeowners": ["@clousberg"],
   "config_flow": true,
   "dependencies": [],
