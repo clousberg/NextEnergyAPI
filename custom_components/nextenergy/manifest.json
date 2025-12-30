@@ -1,5 +1,4 @@
 {
-  "_comment": "https://developers.home-assistant.io/docs/creating_integration_manifest/",
   "domain": "nextenergy",
   "name": "NextEnergy API",
   "after_dependencies": ["http"],
