@@ -4,7 +4,6 @@ from homeassistant.helpers import aiohttp_client
 from .const import API_URL
 
 _LOGGER = logging.getLogger(__name__)
-_LOGGER.debug("Fetched %d prices", len(prices))
 
 class NextEnergyAPI:
     def __init__(self, hass, username, password):
@@ -43,5 +42,7 @@ class NextEnergyAPI:
         prices = data.get("prices")
         if not prices:
             raise Exception("No price data returned from API")
+
+        _LOGGER.debug("Fetched %d prices from NextEnergy API", len(prices))
 
         return prices
