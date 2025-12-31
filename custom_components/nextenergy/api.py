@@ -10,18 +10,32 @@ class NextEnergyAPI:
         self.username = username
         self.password = password
 
-    # Test credentials
     async def test_connection(self):
-    await self.fetch_prices()
+        """Test if credentials are valid."""
+        await self.fetch_prices()
 
-    # Fetch data
     async def fetch_prices(self):
         session = aiohttp_client.async_get_clientsession(self.hass)
-        payload = {"username": self.username, "password": self.password}
-        async with session.post(API_URL, json=payload) as resp:
-            if resp.status != 200:
-                _LOGGER.error("API error: %s", resp.status)
-                raise Exception(f"API error: {resp.status}")
-            data = await resp.json()
-            # Expecting data in form: {"prices": [{"hour": "2025-07-02T00:00:00", "market": 0.11, "market_plus": 0.23}, ...]}
-            return data.get("prices", [])
+        payload = {
+            "username": self.username,
+            "password": self.password,
+        }
+
+        try:
+            async with session.post(API_URL, json=payload) as resp:
+                if resp.status != 200:
+                    text = await resp.text()
+                    _LOGGER.error("API error %s: %s", resp.status, text)
+                    raise Exception(f"API error {resp.status}")
+
+                data = await resp.json()
+
+        except Exception as err:
+            _LOGGER.error("Failed to fetch NextEnergy data: %s", err)
+            raise
+
+        prices = data.get("prices")
+        if not prices:
+            raise Exception("No price data returned from API")
+
+        return prices
