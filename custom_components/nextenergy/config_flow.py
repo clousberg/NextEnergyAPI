@@ -1,24 +1,42 @@
 from homeassistant import config_entries
 import voluptuous as vol
-
 from .const import DOMAIN
+from .api import NextEnergyAPI
 
 class NextEnergyConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
 
     async def async_step_user(self, user_input=None):
         errors = {}
+
         if user_input is not None:
-            # Test credentials here if desired
-            return self.async_create_entry(title="NextEnergy", data=user_input)
+            # Prevent duplicate setup
+            await self.async_set_unique_id(user_input["username"])
+            self._abort_if_unique_id_configured()
 
-        # Try to fetch from secrets.yaml
-        secrets = self.hass.data.get("secrets", {})
-        username = secrets.get("nextenergy_username", "")
-        password = secrets.get("nextenergy_password", "")
+            # Optional: test credentials
+            try:
+                api = NextEnergyAPI(
+                    self.hass,
+                    user_input["username"],
+                    user_input["password"]
+                )
+                await api.test_connection()
+            except Exception:
+                errors["base"] = "cannot_connect"
+            else:
+                return self.async_create_entry(
+                    title="NextEnergy",
+                    data=user_input,
+                )
 
-        data_schema = vol.Schema({
-            vol.Required("username", default=username): str,
-            vol.Required("password", default=password): str,
+        schema = vol.Schema({
+            vol.Required("username"): str,
+            vol.Required("password"): str,
         })
-        return self.async_show_form(step_id="user", data_schema=data_schema, errors=errors)
+
+        return self.async_show_form(
+            step_id="user",
+            data_schema=schema,
+            errors=errors,
+        )
