@@ -31,6 +31,14 @@ Currently supporting  Market and Market+ rates.
 2. Enter your username and password.
 3. Finish setup and sensors will appear.
 
+## Debugging
+Add the following to configuration.yaml.
+
+``
+  logs:
+    custom_components.nextenergy: debug
+``
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
