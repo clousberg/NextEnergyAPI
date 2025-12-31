@@ -25,8 +25,8 @@ class NextEnergyConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     user_input["password"]
                 )
                 await api.test_connection()
-            except Exception:
-                _LOGGER.error("NextEnergy connection failed: %s", err)
+            except Exception as err:
+                _LOGGER.error("NextEnergy connection failed: %s", err, exc_info=True)
                 errors["base"] = "cannot_connect"
                 return self.async_show_form(step_id="user", data_schema=self._get_data_schema(), errors=errors)
             else:
