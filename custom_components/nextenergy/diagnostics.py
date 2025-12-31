@@ -1,14 +1,9 @@
 from __future__ import annotations
-
 from typing import Any
-
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
-
 from .const import DOMAIN
-
 
 async def async_get_config_entry_diagnostics(
     hass: HomeAssistant,
@@ -38,7 +33,6 @@ async def async_get_config_entry_diagnostics(
 
 
 def _redact_sensitive(data: dict) -> dict:
-    """Remove sensitive fields."""
     redacted = {}
     for key, value in data.items():
         if key.lower() in {"password", "token", "api_key", "secret"}:
@@ -49,12 +43,6 @@ def _redact_sensitive(data: dict) -> dict:
 
 
 def _safe_sample_data(data: Any) -> Any:
-    """Return safe subset of coordinator data."""
     if not isinstance(data, dict):
         return None
-
-    return {
-        key: value
-        for key, value in data.items()
-        if key not in {"prices", "raw", "all_prices"}
-    }
+    return {k: v for k, v in data.items() if k not in {"prices", "raw", "all_prices"}}
