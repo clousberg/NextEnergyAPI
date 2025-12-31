@@ -39,7 +39,7 @@ nextenergy_password: "YOUR_PASSWORD"
 ## Notes
 
 - Market = raw exchange price.
-- Market+ = all-in price (market + taxes + VAT).
+- Market+ = all-in price (market price + energy tax + VAT).
 
 ## THANKS
 
