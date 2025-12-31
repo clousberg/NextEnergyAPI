@@ -10,6 +10,11 @@ class NextEnergyAPI:
         self.username = username
         self.password = password
 
+    # Test credentials
+    async def test_connection(self):
+    await self.fetch_prices()
+
+    # Fetch data
     async def fetch_prices(self):
         session = aiohttp_client.async_get_clientsession(self.hass)
         payload = {"username": self.username, "password": self.password}
