@@ -1,10 +1,22 @@
 {
+  "title": "NextEnergy",
   "config": {
     "step": {
       "user": {
-        "title": "NextEnergy Credentials",
-        "description": "Enter your NextEnergy username and password."
+        "title": "Configure NextEnergy",
+        "description": "Enter your NextEnergy account credentials.",
+        "data": {
+          "username": "Username",
+          "password": "Password"
+        }
       }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to NextEnergy. Check your credentials.",
+      "unknown": "Unexpected error occurred."
+    },
+    "abort": {
+      "already_configured": "This account is already configured."
     }
   }
 }
