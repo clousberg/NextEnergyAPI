@@ -7,6 +7,7 @@
   "integration_type": "hub",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/clousberg/NextEnergyAPI/issues",
+  "license": "MIT",
   "loggers": ["custom_components.nextenergy"],
   "requirements": [],
   "version": "1.0.5"  
