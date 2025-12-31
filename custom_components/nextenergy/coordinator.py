@@ -6,6 +6,9 @@ from .const import DOMAIN, DEFAULT_UPDATE_INTERVAL
 
 _LOGGER = logging.getLogger(__name__)
 
+# Temp debug check
+_LOGGER.debug("NextEnergy data updated: %s", prices)
+
 class NextEnergyDataUpdateCoordinator(DataUpdateCoordinator):
     def __init__(self, hass, config_entry):
         self.api = NextEnergyAPI(
