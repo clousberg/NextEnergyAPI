@@ -1,0 +1,32 @@
+quality_scale:
+  silver:
+    docs:
+      automation: false
+      configuration: true
+      services: false
+      troubleshooting: true
+
+    tests:
+      unit: false
+      integration: false
+
+    code_quality:
+      lint: false
+      typing: false
+      strict_typing: false
+
+    runtime:
+      config_flow: true
+      async_setup: true
+      async_setup_entry: true
+      reload: true
+      unload: true
+
+    integration:
+      config_flow: true
+      dependencies: false
+      discovery: false
+      diagnostics: false
+
+    platform:
+      - sensor
