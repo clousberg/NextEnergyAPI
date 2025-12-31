@@ -20,11 +20,10 @@ class NextEnergyAPI:
 
     async def fetch_prices(self):
         """Fetch price data from NextEnergy."""
-        timeout = ClientTimeout(total=20)
-        session = aiohttp_client.async_get_clientsession(self.hass, timeout=timeout)
-
+        session = aiohttp_client.async_get_clientsession(self.hass)
         payload = {"username": self.username, "password": self.password}
-
+        timeout = ClientTimeout(total=20)
+        
         try:
             async with session.post(API_URL, json=payload) as resp:
                 if resp.status != 200:
