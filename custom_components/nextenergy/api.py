@@ -1,8 +1,10 @@
 import logging
+from aiohttp import ClientTimeout
 from homeassistant.helpers import aiohttp_client
 from .const import API_URL
 
 _LOGGER = logging.getLogger(__name__)
+_LOGGER.debug("Fetched %d prices", len(prices))
 
 class NextEnergyAPI:
     def __init__(self, hass, username, password):
@@ -15,7 +17,11 @@ class NextEnergyAPI:
         await self.fetch_prices()
 
     async def fetch_prices(self):
-        session = aiohttp_client.async_get_clientsession(self.hass)
+        timeout = ClientTimeout(total=20)
+        session = aiohttp_client.async_get_clientsession(
+            self.hass, timeout=timeout
+        )
+
         payload = {
             "username": self.username,
             "password": self.password,
