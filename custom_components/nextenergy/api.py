@@ -5,26 +5,25 @@ from .const import API_URL
 
 _LOGGER = logging.getLogger(__name__)
 
+
 class NextEnergyAPI:
+    """Handle NextEnergy API calls."""
+
     def __init__(self, hass, username, password):
         self.hass = hass
         self.username = username
         self.password = password
 
     async def test_connection(self):
-        """Test if credentials are valid."""
+        """Test credentials by fetching prices."""
         await self.fetch_prices()
 
     async def fetch_prices(self):
+        """Fetch price data from NextEnergy."""
         timeout = ClientTimeout(total=20)
-        session = aiohttp_client.async_get_clientsession(
-            self.hass, timeout=timeout
-        )
+        session = aiohttp_client.async_get_clientsession(self.hass, timeout=timeout)
 
-        payload = {
-            "username": self.username,
-            "password": self.password,
-        }
+        payload = {"username": self.username, "password": self.password}
 
         try:
             async with session.post(API_URL, json=payload) as resp:
@@ -44,5 +43,4 @@ class NextEnergyAPI:
             raise Exception("No price data returned from API")
 
         _LOGGER.debug("Fetched %d prices from NextEnergy API", len(prices))
-
         return prices
