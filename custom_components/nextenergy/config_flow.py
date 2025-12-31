@@ -2,6 +2,9 @@ from homeassistant import config_entries
 import voluptuous as vol
 from .const import DOMAIN
 from .api import NextEnergyAPI
+import logging
+
+_LOGGER = logging.getLogger(__name__)
 
 class NextEnergyConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
@@ -23,7 +26,9 @@ class NextEnergyConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 )
                 await api.test_connection()
             except Exception:
+                _LOGGER.error("NextEnergy connection failed: %s", err)
                 errors["base"] = "cannot_connect"
+                return self.async_show_form(step_id="user", data_schema=self._get_data_schema(), errors=errors)
             else:
                 return self.async_create_entry(
                     title="NextEnergy",
