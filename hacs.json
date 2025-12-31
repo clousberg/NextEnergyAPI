@@ -1,6 +1,7 @@
 {
   "name": "NextEnergy API",
   "content_in_root": false,
+  "render_readme": true,
   "country": "NL",
-  "homeassistant": "2024.0.0"
+  "homeassistant": "2025.9.0"
 }
