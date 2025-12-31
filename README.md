@@ -41,10 +41,6 @@ nextenergy_password: "YOUR_PASSWORD"
 - Market = raw exchange price.
 - Market+ = all-in price (market + taxes + VAT).
 
-## License
-
-MIT
-
 ## THANKS
 
 Big thansk to https://github.com/iacavd/NextEnergyPricesHA and https://github.com/ServError/NextEnergyPricesHA
