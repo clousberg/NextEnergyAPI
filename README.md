@@ -1,3 +1,11 @@
+> ⚠️ **WORK IN PROGRESS**
+>
+> This project is currently under active development.
+> The solution is **not stable**, **not complete**, and **not ready for production use**.
+> 
+![Status](https://img.shields.io/badge/status-work_in_progress-orange)
+![Stability](https://img.shields.io/badge/stability-unstable-red)
+
 # NextEnergy Home Assistant Integration
 
 [![HACS](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz/)
@@ -43,5 +51,5 @@ Add the following to configuration.yaml.
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## THANKS
-Big thansk to https://github.com/iacavd/NextEnergyPricesHA and https://github.com/ServError/NextEnergyPricesHA
+Big thanks to https://github.com/iacavd/NextEnergyPricesHA and https://github.com/ServError/NextEnergyPricesHA
 for the analysis and coding!
