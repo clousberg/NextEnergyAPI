@@ -2,6 +2,8 @@
 >
 > This project is currently under active development.
 > The solution is **not stable**, **not complete**, and **not ready for production use**.
+>
+> ....and....just doesn't work yet ....
 > 
 ![Status](https://img.shields.io/badge/status-work_in_progress-orange)
 ![Stability](https://img.shields.io/badge/stability-unstable-red)
